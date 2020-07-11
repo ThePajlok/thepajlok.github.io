@@ -5,23 +5,66 @@
             <link rel="stylesheet" href="style.css">
         </head>
         <body>
-            <header>
-                <nav>
-                    <button class="nav-button" value="Home"></button>
-                    <button class="nav-button" value="Download"></button>
-                    <button class="nav-button" value="Documentation"></button>
-                    <button class="nav-button" value="About"></button>
-                </nav>
-            </header>
-            <section class="top-section">
-                <h1>OpenSA</h1>
-                <h4>Simple way to manage your game</h4>
-            </section>
-            <section class="page-section">
+            <nav>
+                <button id="go1" onclick="smoothScroll(document.getElementById('1'))" class="nav-button">Home</button>
+                <button id="go2" onclick="smoothScroll(document.getElementById('2'))" class="nav-button">Documentation</button>
+                <button id="go3" onclick="smoothScroll(document.getElementById('3'))" class="nav-button">About</button>
+                <button id="go4" onclick="smoothScroll(document.getElementById('4'))" class="nav-button">Download</button>
+            </nav>
+            <div class="main-one" id="1">
+                <section class="top-section">
+                    <h1>OpenSA</h1>
+                    <h4>Simple way to manage your game</h4>
+                </section>
+                <section class="page-section">
+                    <b>What is OpenSA?</b><br>
+                    OpenSA is a mod manager for GTA San Andreas. This is a similar application to OpenIV. At this moment is in very early stage so is avillable only mod installer. You can create own mod installer by checking documentation for help. Also this is not a unsport try to copy the original idea for OpenIV, this app looks similar but only looks like that.
+                </section>
+            </div>
+            <div class="main-two" id="2">
+                <section class="page-section">
+                    <h2>Documentation</h3>
+                    <h5>Something you know</h5>
+                    todo
+                </section>
+            </div>
+            <div id="3" class="main-three">
+                <section class="page-section">
+                    todo
+                </section>
+            </div>
+            <div id="4" class="main-three">
+                <section class="page-section">
+                    <h2 style="filter:invert()">Download</h3><br>
+                        In this place you can download latest version of OpenSA. Keep in mind, this is still early version so you can find bugs and etc. Report it directly to me:<br>
+                        <br>My discord: <b>ThePajlok#4394</b><br><br>
+                        <button class="action-button">Download</button>
+                </section>
+            </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script>
+            window.smoothScroll = function(target) {
+                var scrollContainer = target;
+                do { //find scroll container
+                    scrollContainer = scrollContainer.parentNode;
+                    if (!scrollContainer) return;
+                    scrollContainer.scrollTop += 1;
+                } while (scrollContainer.scrollTop == 0);
 
-            </section>
-            <footer>
+                var targetY = 0;
+                do { //find the top of target relatively to the container
+                    if (target == scrollContainer) break;
+                    targetY += target.offsetTop;
+                } while (target = target.offsetParent);
 
-            </footer>
+                scroll = function(c, a, b, i) {
+                    i++; if (i > 120) return;
+                    c.scrollTop = a + (b - a) / 120 * i;
+                    setTimeout(function(){ scroll(c, a, b, i); }, 3);
+                }
+                // start scrolling
+                scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+            }
+            </script>
         </body>
     </html>
